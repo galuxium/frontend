@@ -1,4 +1,4 @@
-"use client"
+
 import ClientWrapper from "@/components/Navigation/ClientWrapper";
 
 
