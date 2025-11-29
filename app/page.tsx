@@ -1,16 +1,6 @@
-"use client";
-
-import { useSession } from "@/lib/SessionContext";
-import Loading from "@/components/Loading";
+import ClientWrapper from "@/components/Navigation/ClientWrapper";
 
 
 export default function HomePage() {
-  const { loading } = useSession();
-
-  if (loading) {
-    return (
-      <Loading/>
-    );
-  }
-
+  return <ClientWrapper />;
 }
