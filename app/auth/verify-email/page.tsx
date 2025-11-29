@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
@@ -93,7 +93,8 @@ export default function VerifyEmailPage() {
   }
 
   return (
-    <div className="min-h-screen fixed inset-0 bg-surface/50 backdrop-blur-lg  p-4 flex items-center justify-center z-50  overflow-hidden">
+    <Suspense fallback={<Loading />}>
+<div className="min-h-screen fixed inset-0 bg-surface/50 backdrop-blur-lg  p-4 flex items-center justify-center z-50  overflow-hidden">
  <div className="absolute -top-20 -left-32 w-[600px] h-[600px] bg-linear-to-br from-secondary to-accent opacity-20 blur-[120px] rounded-full z-0" />
       <div className="absolute bottom-[-60px] -right-10 w-[500px] h-[500px] bg-linear-to-tr from-primary to-accent opacity-20 blur-[100px] rounded-full z-0" />
 
@@ -154,5 +155,6 @@ export default function VerifyEmailPage() {
         </p>
       </motion.div>
     </div>
+    </Suspense>
   );
 }
