@@ -1,26 +1,103 @@
 @import "tailwindcss";
 
+
 :root {
-  --background: #ffffff;
+  --background: #F8F9FB;
+  --surface: #FFFFFF;
   --foreground: #171717;
+  --primary: #6C63FF;
+  --primary-dark: #A29BFE;
+  --accent: #FFD369;
+  --accent-dark: #E5C97B;
+  --secondary: #2D3436;
+  --border: #E0E0E0;
+  --primary: #1C1C1C;
+  --secondary: #5A5A5A;
+  --success: #4CAF50;
+  --error: #cf0300;
+  --info: #2196F3;
+  --button:#2900a3;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #16181D;
+    --surface: #0D0D0F;
+    --foreground: #EDEDED;
+    --primary: #A29BFE;
+    --accent:#FFD369;
+    --secondary: #2D3436;
+    --border: #1E2124;
+    --primary-text: #FFFFFF;
+    --secondary-text: #B5B5B5;
+    --button:#2900a3;
   }
 }
+
+
+@theme inline {
+  /* Basic colors */
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+
+  /* Primary & Accent */
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+
+  /* Supporting colors */
+  --color-secondary: var(--secondary);
+  --color-border: var(--border);
+  --color-primary-text: var(--primary-text);
+  --color-secondary-text: var(--secondary-text);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-info: var(--info);
+  --color-button: var(--button);
+}
+
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
+
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+
+
+
+.custom-scrollbar {
+  overflow-y: auto;
+  scrollbar-width: thin; 
+  scrollbar-color: var(--button) transparent;
+}
+
+/* Webkit scrollbar track */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;              
+  height: 8px;              /* height of horizontal scrollbar */
+}
+
+/* Track */
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;  /* or a subtle background */
+  border-radius: 10px;
+}
+
+/* Thumb (the draggable handle) */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--button);  /* your primary color */
+  border-radius: 10px;
+  border: 2px solid transparent; /* space around thumb */
+  background-clip: content-box;
+  transition: background-color 0.3s ease;
+}
+
