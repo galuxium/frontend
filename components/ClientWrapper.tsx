@@ -21,7 +21,7 @@ export default function ClientWrapper({ children }: ClientWrapperProps) {
       )}
       <main
         className={`transition-all duration-300 ease-in-out flex-1 ${
-          session ? (collapsed ? "lg:ml-[5vw]" : "lg:ml-[16vw]") : ""
+          session ? (collapsed ? "lg:ml-[4vw]" : "lg:ml-[16vw]") : ""
         }`}
       >
         {children}

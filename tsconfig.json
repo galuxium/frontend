@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lib/supabase.ts", "tailwind.config.js", "components/LandingPage.jsx", "app/analytics/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lib/supabase.js", "tailwind.config.js", "components/LandingPage.jsx", "app/analytics/page.tsx"],
   "exclude": ["node_modules"]
 }

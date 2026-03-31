@@ -1,9 +1,9 @@
 "use client";
 
 import LandingPage from "@/components/LandingPage";
-import Dashboard from "@/components/Dashboard";
 import { useSession } from "@/lib/SessionContext";
 import Loading from "@/components/Loading";
+import AiChat from "@/components/AiChat";
 
 export default function HomePage() {
   const { session, loading } = useSession();
@@ -14,5 +14,5 @@ export default function HomePage() {
     );
   }
 
-  return session ? <Dashboard /> : <LandingPage />;
+  return session ? <AiChat /> : <LandingPage />;
 }

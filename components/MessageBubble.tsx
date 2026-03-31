@@ -55,57 +55,127 @@ export default function MessageBubble({
           wordBreak: "break-word",
           position: "relative",
         }}
-        className="my-2"
+        className={`my-2 ${isUser ? "text-[#fff]" : "text=[#000]"  }`}
       >
         {msg.content ? (
-          <>
-            <ReactMarkdown
-              components={{
-                p: ({ children }) => <p style={{ margin: "0 0 6px" }}>{children}</p>,
-                strong: ({ children }) => (
-                  <strong style={{ color: isUser ? "#fff" : "#2000c1" }}>
-                    {children}
-                  </strong>
-                ),
-                a: ({ href, children }) => (
-                  <a
-                    href={href}
-                    style={{
-                      color: isUser ? "#ffe066" : "#0077b6",
-                      textDecoration: "underline",
-                    }}
-                  >
-                    {children}
-                  </a>
-                ),
-                code: ({ inline, children }: { inline?: boolean; children?: React.ReactNode }) =>
-                  inline ? (
-                    <code
-                      style={{
-                        background: "#f1f1f1",
-                        padding: "2px 5px",
-                        borderRadius: "4px",
-                      }}
-                    >
-                      {children}
-                    </code>
-                  ) : (
-                    <pre
-                      style={{
-                        background: "#1e1e1e",
-                        padding: "8px",
-                        borderRadius: "6px",
-                        overflowX: "auto",
-                        color: "#fff",
-                      }}
-                    >
-                      <code>{children}</code>
-                    </pre>
-                  ),
-              }}
-            >
-              {msg.content}
-            </ReactMarkdown>
+          <div
+          className="prose prose-neutral dark:prose-invert max-w-none leading-relaxed text-[15px] tracking-wide"
+          >
+           <ReactMarkdown
+  
+  components={{
+    p: ({ children }) => (
+      <p className="mb-3 text-[15px]  font-normal">
+        {children}
+      </p>
+    ),
+
+    strong: ({ children }) => (
+      <strong className="font-semibold ">
+        {children}
+      </strong>
+    ),
+
+    em: ({ children }) => (
+      <em className="italic">{children}</em>
+    ),
+
+    a: ({ href, children }) => (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-blue-600 dark:text-blue-400 hover:underline transition-all duration-150"
+      >
+        {children}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          className="inline-block ml-1 w-3.5 h-3.5 opacity-75 group-hover:opacity-100"
+        >
+          <path
+            fillRule="evenodd"
+            d="M12.293 2.293a1 1 0 011.414 0l4 4a1
+            1 0 01-1.414 1.414L14 5.414V17a1 1 0 11-2
+            0V5.414L9.707 7.707A1 1 0 018.293
+            6.293l4-4z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </a>
+    ),
+
+    blockquote: ({ children }) => (
+      <blockquote className="border-l-4 border-blue-500 dark:border-blue-400 pl-4 italic my-3 bg-blue-50/40 dark:bg-blue-950/30 rounded-md py-2">
+        {children}
+      </blockquote>
+    ),
+
+    ul: ({ children }) => (
+      <ul className="list-disc list-inside my-2 space-y-1 ">
+        {children}
+      </ul>
+    ),
+
+    ol: ({ children }) => (
+      <ol className="list-decimal list-inside my-2 space-y-1 ">
+        {children}
+      </ol>
+    ),
+
+    li: ({ children }) => <li className="pl-1">{children}</li>,
+
+    code: ({
+      inline,
+      className,
+      children,
+    }: {
+      inline?: boolean;
+      className?: string;
+      children?: React.ReactNode;
+    }) => {
+      const match = /language-(\w+)/.exec(className || "");
+      return inline ? (
+        <code className="bg-gray-100 dark:bg-gray-800 text-[14px] px-2 py-0.5 rounded-md font-medium text-gray-900 dark:text-gray-100">
+          {children}
+        </code>
+      ) : (
+        <pre className="relative bg-[#0d1117] text-gray-100 text-[14px] leading-relaxed font-mono rounded-xl p-4 shadow-inner border border-gray-800 my-3 overflow-x-auto">
+          {match && (
+            <div className="absolute top-2 right-3 text-[11px] text-gray-400 uppercase font-semibold">
+              {match[1]}
+            </div>
+          )}
+          <code className="whitespace-pre-wrap break-words">{children}</code>
+        </pre>
+      );
+    },
+
+    hr: () => (
+      <hr className="my-4 border-gray-200 dark:border-gray-700 rounded-full" />
+    ),
+
+    h1: ({ children }) => (
+      <h1 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-50 tracking-tight">
+        {children}
+      </h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-800 pb-1">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-200">
+        {children}
+      </h3>
+    ),
+  }}
+>
+  {msg.content}
+</ReactMarkdown>
+
 
             {/* Model tag */}
             {!isUser && (
@@ -118,7 +188,7 @@ export default function MessageBubble({
             )}
             
             
-          </>
+          </div>
         ) : (
           // Loading animation
           <div className="flex items-center gap-2 h-6">

@@ -19,12 +19,12 @@ body.founders-mode {
     rgba(99,0,255,0.2),
     rgba(255,0,180,0.1) 70%,
     transparent 100%);
-  box-shadow: 0 0 60px 10px rgba(255,0,180,0.2) inset;
+  box-shadow: 0 0 60px 10px rgba(22,0,743,0.2) inset;
 }
 
 /* Optional text glow */
 .founders-glow {
-  text-shadow: 0 0 6px #ff80ff, 0 0 12px #ffaaff;
+  text-shadow: 0 0 6px #3811c3, 0 0 12px #3a16dc;
 }
 
 @theme inline {

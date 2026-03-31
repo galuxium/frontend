@@ -207,5 +207,7 @@ export interface ProfileForm {
   username: string;
   plan: string;
   tokens_used: number;
+  userTokens:number,
+  assistantTokens:number
 };
 

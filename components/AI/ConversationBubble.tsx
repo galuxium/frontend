@@ -64,7 +64,7 @@ export default function ConversationBubble({
 
       // Adjust vertically if overflowing
       if (top + MENU_HEIGHT > viewportHeight + window.scrollY) {
-        top = rect.top + window.scrollY - MENU_HEIGHT - 5;
+        top = rect.top + window.scrollY - MENU_HEIGHT +60;
       }
       if (top < 0) {
         top = 8;
@@ -78,14 +78,14 @@ export default function ConversationBubble({
   return (
     <>
       <div
-        className={`group md:w-[15vw] w-[34vw] max-h-[15vh] cursor-pointer transition-all duration-200 
+        className={`group md:w-[14vw] w-[34vw] max-h-[15vh] cursor-pointer transition-all duration-200 
         ${activeConversationId === c.id
           ? "bg-[#f4f1ff] border-l-4 border-[#5C3BFF]"
           : "hover:bg-white/10 hover:shadow-md hover:shadow-indigo-500/20"
         }`}
       >
         <span className="font-semibold text-sm grid grid-cols-[90%_10%] items-center">
-          <span className="py-3 px-5" onClick={() => setActiveConversationId(c.id)}>{c.title}</span>
+          <span className="py-2 px-5" onClick={() => setActiveConversationId(c.id)}>{c.title}</span>
           <div ref={iconRef}>
             <FaBars
               className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-gray-500 hover:text-indigo-800"
